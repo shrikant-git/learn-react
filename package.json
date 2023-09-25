@@ -1,0 +1,37 @@
+{
+  "name": "learn-react",
+  "version": "1.0.0",
+  "description": "This is about learning React",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shrikant-git/learn-react.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Shrikant Pawar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shrikant-git/learn-react/issues"
+  },
+  "homepage": "https://github.com/shrikant-git/learn-react#readme",
+  "devDependencies": {
+    "parcel": "^2.8.3",
+    "postcss": "^8.4.30",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
