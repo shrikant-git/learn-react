@@ -1,9 +1,9 @@
 const Shimmer = () => {
   return (
-    <div className="shimmer-container">
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
+    <div className="flex">
+      <div className="m-4 bg-gray-100 w-[200px] h-[300px]"></div>
+      <div className="m-4 bg-gray-100 w-[200px] h-[300px]"></div>
+      <div className="m-4 bg-gray-100 w-[200px] h-[300px]"></div>
     </div>
   );
 };

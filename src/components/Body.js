@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import Shimmer from './Shimmer';
-import RestaurantCard from './RestaurantCard';
+import RestaurantCard, { withPromotedLabel } from './RestaurantCard';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/userContext';
+
 // import restaurantList from '../utils/mockData';
 
 const Body = () => {
@@ -11,6 +13,11 @@ const Body = () => {
   const [filteredRestaurants, setfilteredRestaurants] = useState([]);
 
   const [searchText, setSearchText] = useState('');
+
+  const { loggedInUser, setUsername } = useContext(UserContext);
+
+  //HOC
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   const fetchData = async () => {
     const data = await fetch(
@@ -41,16 +48,18 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
+      <div className="filter flex">
         <div className="search m-4 p-4">
           {/*binding local value with input */}
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-solid"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
+            className="px-4 py-2 bg-green-100 m-4 rounded-md"
             onClick={() => {
               const filteredRestaurant = listOfRestaurants?.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase()),
@@ -60,21 +69,35 @@ const Body = () => {
           >
             Search
           </button>
+          <button
+            className="px-4 py-2 bg-gray-100 rounded-lg"
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4);
+              setfilteredRestaurants(filteredList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
         </div>
-        <button
-          className="filter-bn"
-          onClick={() => {
-            const filteredList = listOfRestaurants?.filter((res) => res.info.avgRating > 4);
-            setListOfRestaurants(filteredList);
-          }}
-        >
-          Top Rated Restaurant
-        </button>
+
+        <div className="search m-4 p-4 flex items-center">
+          <label>Logged in user: </label>
+          <input
+            type="text"
+            className="border border-black px-4"
+            value={loggedInUser}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredRestaurants?.map((restaurant) => (
           <Link key={restaurant?.info?.id} to={'/restaurants/' + restaurant?.info?.id}>
-            <RestaurantCard resData={restaurant} />
+            {restaurant?.info?.promoted ? (
+              <RestaurantCardPromoted resData={restaurant?.info} />
+            ) : (
+              <RestaurantCard resData={restaurant?.info} />
+            )}
           </Link>
         ))}
       </div>

@@ -1,5 +1,7 @@
-import React, { lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+//Providing store to react application is react job hence the below import
+import { Provider } from 'react-redux';
 
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
@@ -7,6 +9,9 @@ import Error from './components/Error';
 import Body from './components/Body';
 import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
+import UserContext from './utils/userContext';
+import appStore from './utils/appStore';
+import Cart from './components/Cart';
 
 //import is not the standard import function
 const Grocery = lazy(() => import('./components/Grocery'));
@@ -44,11 +49,22 @@ const About = lazy(() => import('./components/About'));
 
 // no key (not acceptable)<<<<<<<<<<< index key(last option) <<<<< unquie key (best practice)
 const AppLayout = () => {
+  const [username, setUsername] = useState();
+
+  useEffect(() => {
+    const data = { name: 'Shrikant P' };
+    setUsername(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: username, setUsername }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -84,6 +100,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/restaurants/:resId',
         element: <RestaurantMenu />,
+      },
+      {
+        path: '/cart',
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

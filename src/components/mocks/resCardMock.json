@@ -1,0 +1,91 @@
+{
+  "id": "52954",
+  "name": "Faasos - Wraps & Rolls",
+  "cloudinaryImageId": "af33b81798b11deba338e94b7585d348",
+  "locality": "Jakkasandra",
+  "areaName": "Hsr Layout 5th Sector",
+  "costForTwo": "₹200 for two",
+  "cuisines": [
+      "Kebabs",
+      "Fast Food",
+      "Snacks",
+      "North Indian",
+      "American",
+      "Healthy Food",
+      "Desserts",
+      "Beverages"
+  ],
+  "avgRating": 4.2,
+  "feeDetails": {
+      "restaurantId": "52954",
+      "fees": [
+          {
+              "name": "BASE_DISTANCE",
+              "fee": 3100
+          },
+          {
+              "name": "BASE_TIME"
+          },
+          {
+              "name": "ANCILLARY_SURGE_FEE"
+          }
+      ],
+      "totalFee": 3100
+  },
+  "parentId": "21809",
+  "avgRatingString": "4.2",
+  "totalRatingsString": "10K+",
+  "sla": {
+      "deliveryTime": 25,
+      "lastMileTravel": 2.4,
+      "serviceability": "SERVICEABLE",
+      "slaString": "25 mins",
+      "lastMileTravelString": "2.4 km",
+      "iconType": "ICON_TYPE_EMPTY"
+  },
+  "availability": {
+      "nextCloseTime": "2023-09-28 23:59:00",
+      "opened": true
+  },
+  "badges": {
+      "textExtendedBadges": [
+          {
+              "iconId": "guiltfree/GF_Logo_android_3x",
+              "shortDescription": "options available",
+              "fontColor": "#7E808C"
+          }
+      ]
+  },
+  "isOpen": true,
+  "aggregatedDiscountInfoV2": {},
+  "type": "F",
+  "badgesV2": {
+      "entityBadges": {
+          "imageBased": {},
+          "textBased": {},
+          "textExtendedBadges": {
+              "badgeObject": [
+                  {
+                      "attributes": {
+                          "description": "",
+                          "fontColor": "#7E808C",
+                          "iconId": "guiltfree/GF_Logo_android_3x",
+                          "shortDescription": "options available"
+                      }
+                  }
+              ]
+          }
+      }
+  },
+  "differentiatedUi": {
+      "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      "differentiatedUiMediaDetails": {
+          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+          "lottie": {},
+          "video": {}
+      }
+  },
+  "reviewsSummary": {},
+  "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+  "restaurantOfferPresentationInfo": {}
+}
